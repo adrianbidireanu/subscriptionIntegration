@@ -19,7 +19,7 @@ Make sure you have installed:
 
 ---
 
-# 🛠️ Project Setup
+# Project Setup
 
 ## 1. Clone repository
 
@@ -34,7 +34,7 @@ This will start:
 
 PHP-FPM (Symfony application)
 Nginx web server
-🌍 Access Application
+ Access Application
 
 ## 3. Build and start containers
 
