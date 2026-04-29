@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}MAG plus{% endblock %}</title>
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('styles/landing.css') }}">
+    {% endblock %}
+</head>
+<body>
+
+{% include 'components/header.html.twig' %}
+
+{% include 'components/banner.html.twig' %}
+
+<div class="container">
+    <div class="action-section">
+        {% block action_block %}{% endblock %}
+    </div>
+    <div class="price-section">
+        {% block price_block %} $5.500 / Semanal {% endblock %}
+    </div>
+</div>
+
+{% include 'components/disclaimer.html.twig' %}
+
+{% include 'components/footer.html.twig' %}
+
+</body>
+</html>

@@ -1,0 +1,144 @@
+:root {
+    --main-bg-color: #4B71F7;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #ffffff;
+    color: #111;
+}
+
+#logo_bar {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+    border-bottom: 1px solid #eee;
+    background: #fff;
+}
+
+#logo_bar img {
+    height: 28px;
+    object-fit: contain;
+}
+
+.header-text {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 16px 20px;
+    line-height: 1.4;
+}
+
+.banner-section {
+    text-align: center;
+    padding: 10px 20px 20px;
+}
+
+.banner-image img {
+    width: 100%;
+    max-width: 360px;
+    border-radius: 12px;
+}
+
+.banner-text {
+    margin-top: 12px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+}
+
+.container {
+    padding: 20px;
+    max-width: 420px;
+    margin: 0 auto;
+}
+
+.action-section {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.action-section form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.action-section input {
+    border: 3px solid var(--main-bg-color);
+    padding: 14px;
+    font-size: 16px;
+    border-radius: 8px;
+    outline: none;
+}
+
+.action-section input:focus {
+    border-color: #000;
+}
+
+.action-section button {
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: var(--main-bg-color);
+    border: none;
+    cursor: pointer;
+    top: 552px;
+    left: 69px;
+    border-radius: 66px;
+    padding: 10px;
+    gap: 10px;
+    opacity: 1;
+
+}
+
+.action-section button:hover {
+    opacity: 0.9;
+}
+
+.price-section {
+    margin-top: 12px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    color: #444;
+}
+
+
+.disclaimer {
+    font-size: 11px;
+    color: #777;
+    text-align: center;
+    padding: 16px 20px;
+    line-height: 1.4;
+    max-width: 480px;
+    margin: 0 auto;
+}
+
+.site-footer {
+    margin-top: 20px;
+    padding: 20px;
+    border-top: 1px solid #eee;
+    text-align: center;
+    font-size: 12px;
+    color: #666;
+}
+
+.footer-links {
+    margin-top: 8px;
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+}
+
+.footer-link {
+    color: #000;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.footer-link:hover {
+    text-decoration: underline;
+}
