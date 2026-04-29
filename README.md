@@ -1,4 +1,4 @@
-# Dockerized Symfony Appliction
+# Dockerized Symfony Application
 
 This project is a Symfony application running inside Docker using:
 - PHP-FPM
