@@ -725,6 +725,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *     parameters?: ParametersConfig,
  *     services?: ServicesConfig,
  *     framework?: FrameworkConfig,
+ *     maker?: MakerConfig,
  *     twig?: TwigConfig,
  *     "when@dev"?: array{
  *         imports?: ImportsConfig,
@@ -739,6 +740,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         parameters?: ParametersConfig,
  *         services?: ServicesConfig,
  *         framework?: FrameworkConfig,
+ *         maker?: MakerConfig,
  *         twig?: TwigConfig,
  *     },
  *     "when@test"?: array{
@@ -746,6 +748,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         parameters?: ParametersConfig,
  *         services?: ServicesConfig,
  *         framework?: FrameworkConfig,
+ *         maker?: MakerConfig,
  *         twig?: TwigConfig,
  *     },
  *     ...<string, ExtensionType|array{ // extra keys must follow the when@%env% pattern or match an extension alias
