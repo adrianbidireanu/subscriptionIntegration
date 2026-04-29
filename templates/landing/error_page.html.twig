@@ -1,6 +1,19 @@
 {% extends 'base/base_landing_page.html.twig' %}
 
 {% block action_block %}
-    Oops something went wrong with your subscription process.
-    Please contact us for further questions>
+    <div class="error-box">
+
+        <p>
+            {{ error }}
+        </p>
+
+        <p>
+            Please contact us for further assistance.
+        </p>
+
+        <a href="{{ path('landing_page') }}" class="btn btn-primary">
+            Try again
+        </a>
+    </div>
 {% endblock %}
+{% block price_block %}{% endblock %}

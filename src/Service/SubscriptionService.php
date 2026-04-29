@@ -2,39 +2,69 @@
 
 namespace App\Service;
 
+use App\Enum\SubscriptionCode;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
+
 class SubscriptionService
 {
     public function __construct(
-        private CarrierApiClient $api
+        private readonly CarrierApiClient $api
     ) {
     }
 
-    public function sendPin(string $phone): array
+    public function sendPin(SessionInterface $session, string $phone): array
     {
-        $res = $this->api->checkSubscription($phone);
+        $userStatus = $this->api->checkSubscription($phone);
 
-        if (($res['status'] ?? null) === 'ALREADY_SUBSCRIBED') {
-            return ['step' => 'subscribed'];
+        if (($userStatus['code'] ?? null) === SubscriptionCode::USER_NOT_SUBSCRIBED->value) {
+            $session->set('token', $userStatus['token'] ?? null);
+        } else {
+            return [
+                'step'    => 'error',
+                'message' => $userStatus['message'],
+            ];
         }
 
-        $pin = $this->api->sendPin($phone);
+        $sendPinResponse = $this->api->sendPin($phone, $userStatus['token']);
 
-        return [
-            'step'  => 'pin',
-            'phone' => $phone,
-            'token' => $pin['session_token'] ?? null,
-        ];
+        if (($sendPinResponse['code'] ?? null) === SubscriptionCode::PIN_SENT->value) {
+            return [
+                'step' => 'pin',
+            ];
+        } else {
+            return [
+                'step'    => 'error',
+                'message' => $sendPinResponse['message'],
+            ];
+        }
     }
 
-    public function confirmPin(string $phone, string $pin, string $token): array
+    public function confirmPin(SessionInterface $session, string $pin): array
     {
-        $res = $this->api->confirmPin($phone, $pin, $token);
+        $phone = $session->get('phone');
+        $token = $session->get('token');
 
-        if (($res['status'] ?? null) !== 'SUCCESS') {
-            return ['step' => 'error'];
+        $confirmPinResponse = $this->api->confirmPin($phone, $pin, $token);
+
+        if (($confirmPinResponse['code'] ?? null) !== SubscriptionCode::SUBSCRIBED->value) {
+            return [
+                'step'    => 'error',
+                'message' => $confirmPinResponse['message'],
+            ];
         }
 
-        return ['step' => 'subscribed'];
+        $userStatus = $this->api->checkSubscription($phone, $session->get('token'));
+
+        if (($userStatus['code'] ?? null) !== SubscriptionCode::SUBSCRIBED->value) {
+            return [
+                'step'    => 'error',
+                'message' => $userStatus['message'],
+            ];
+        }
+
+        return [
+            'step' => 'subscribed',
+        ];
     }
 }
 

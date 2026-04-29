@@ -24,11 +24,10 @@ class CarrierApiClient
      * @throws DecodingExceptionInterface
      * @throws ClientExceptionInterface
      */
-    public function checkSubscription(string $phone): array
+    public function checkSubscription(string $phone, ?string $token = null): array
     {
-
         return $this->client->request('POST', $this->carrierBaseUrl . '/check-subscription', [
-            'json' => ['phone' => $phone],
+            'json' => ['phone' => $phone, 'token' => $token],
         ])->toArray();
     }
 
@@ -39,11 +38,13 @@ class CarrierApiClient
      * @throws DecodingExceptionInterface
      * @throws ClientExceptionInterface
      */
-    public function sendPin(string $phone): array
+    public function sendPin(string $phone, string $token): array
     {
-
         return $this->client->request('POST', $this->carrierBaseUrl . '/send-pin', [
-            'json' => ['phone' => $phone],
+            'json' => [
+                'phone'         => $phone,
+                'session_token' => $token,
+            ],
         ])->toArray();
     }
 
@@ -64,4 +65,5 @@ class CarrierApiClient
             ],
         ])->toArray();
     }
+
 }

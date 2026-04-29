@@ -142,3 +142,26 @@ body {
 .footer-link:hover {
     text-decoration: underline;
 }
+
+.phone-prefix-box {
+    border: 3px solid var(--main-bg-color);
+    padding: 14px;
+    font-size: 16px;
+    border-radius: 8px;
+    outline: none;
+}
+.phone-field{
+    display: flex;
+    justify-content: space-between;
+}
+.phone-input{
+    width: 60%;
+}
+
+.phone-prefix-box .flag {
+    width: 18px;
+    height: 14px;
+    object-fit: cover;
+    border-radius: 2px;
+}
+

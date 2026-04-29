@@ -1,8 +1,32 @@
 {% extends 'base/base_landing_page.html.twig' %}
 
 {% block action_block %}
-    <form method="POST" action="/send-pin">
-        <input type="text" name="phone" placeholder="Enter phone number">
-        <button type="submit">Continue</button>
+    <div class="text">
+        Ingresa tu número móvil
+        para acceder al contenido
+    </div>
+
+    <form method="POST" action="/send-pin" class="phone-form">
+
+        <div class="phone-field">
+
+            <div class="phone-prefix-box">
+                <img src="{{ asset('images/flag.png') }}" alt="flag" class="flag">
+                <span>{{ phone_prefix }}</span>
+            </div>
+
+            <input
+                type="text"
+                name="phone"
+                placeholder="{{ phone_placeholder }}"
+                pattern="{{ phone_regex }}"
+                class="phone-input"
+                required
+            >
+
+        </div>
+
+        <button type="submit" class="btn">Continue</button>
+
     </form>
 {% endblock %}

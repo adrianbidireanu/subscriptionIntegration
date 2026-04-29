@@ -1,8 +1,14 @@
 {% extends 'base/base_landing_page.html.twig' %}
 
 {% block action_block %}
+    <div class="text">
+        Ingresa el PIN recibido en tu móvil
+        para acceder al contenido
+    </div>
+
     <form method="POST" action="/confirm-pin">
-        <input type="text" name="pin" placeholder="Enter PIN">
+        <input type="text" name="pin"  placeholder="{{ pin_placeholder }}"
+               pattern="{{ pin_regex }}">
         <button type="submit">Confirm</button>
     </form>
 {% endblock %}

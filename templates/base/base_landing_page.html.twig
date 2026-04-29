@@ -7,23 +7,23 @@
     {% endblock %}
 </head>
 <body>
+<div class="container max-width-100">
+    {% include 'components/header.html.twig' %}
 
-{% include 'components/header.html.twig' %}
 
-{% include 'components/banner.html.twig' %}
+    {% include 'components/banner.html.twig' %}
 
-<div class="container">
     <div class="action-section">
         {% block action_block %}{% endblock %}
     </div>
     <div class="price-section">
         {% block price_block %} $5.500 / Semanal {% endblock %}
     </div>
+
+    {% include 'components/disclaimer.html.twig' %}
+
+    {% include 'components/footer.html.twig' %}
 </div>
-
-{% include 'components/disclaimer.html.twig' %}
-
-{% include 'components/footer.html.twig' %}
 
 </body>
 </html>
